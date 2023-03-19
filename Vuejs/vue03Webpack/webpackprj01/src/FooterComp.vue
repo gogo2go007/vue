@@ -1,7 +1,9 @@
 <style scoped></style>
 
 <template>
-  <div>App</div>
+  <footer data-role="footer">
+    <h1>Footer.html</h1>
+  </footer>
 </template>
 
 <script>

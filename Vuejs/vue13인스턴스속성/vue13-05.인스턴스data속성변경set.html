@@ -112,3 +112,80 @@
   </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      arr: [1, 2, 3, 4, 5]
+    },
+    //template: ``,
+    methods: {
+      /* 이벤트 핸들러 등록 + 일반 함수 */
+      change1(e) {
+        console.log(e.target);
+        //this.$data.arr[0] = 100; // [100, 2, 3, 4, 5] //직접수정방법 > 문제가 생길 수 있음
+        this.$data.arr.splice(0, 1, 100); //0번부터 하나 지우고 100으로 수정> 스플라이스방법!!
+        console.log(this.$data.arr);
+      },
+      change2(e) {
+        console.log(e.target);
+        this.$data.arr.splice(1, 1, 300); // [100, 300, 3, 4, 5]
+      },
+      change3(e) {
+        console.log(e.target);
+        // 배열복제
+        const newarr = this.$data.arr.filter((value, index, array) => {
+          // debugger;
+          if (index >= 2)
+            return true;
+          else
+            return false;
+        });
+        // (재)할당 > 이렇게 해야지 배열 참조도 문제 되지 않는다.
+        debugger;
+        this.$data.add = newarr;
+      },
+      change4(e) {
+        console.log(e.target);
+        // 배열 복제
+        //const newarr = []
+        // newarr.push(500);
+        // newarr.push(...this.$data.arr);
+        // newarr.push(70);
+        const newarr = [500, ...this$data.arr, 70];
+
+        // (재)할당
+        this.$data.arr = newarr;
+      },
+    },
+    components: {
+      /* 전역 컴포넌트인 경우는 등록하지 않는다. 전역 컴포넌트는 프로토타입 체인으로 찾을 수 있기 때문에 */
+      /* 지역 컴포넌트나 파일 컴포넌트만 등록 한다. 예시) "태그명" : 컴포넌트명 */
+
+    },
+    computed: {
+      /* 자동처리 + 동기식. 변수명이 메서드 명이다. 메서드로 작성. return 필수.  data 와 공존 불가 */
+
+    },
+    watch: {
+      /* 자동처리 + 비동기식. data 에 등록된 프로퍼티(변수) 모니터링. 메서드로 작성. 매개변수 필수. 외부 api 호출을 위해서 사용 */
+
+    },
+    created() {
+      console.log("created");
+    },
+    mounted() {
+      console.log("mounted");
+    },
+    updated() {
+      console.log("updated");
+    },
+  });
+
+</script>

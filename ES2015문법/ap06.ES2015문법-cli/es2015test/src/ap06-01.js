@@ -1,5 +1,5 @@
 'use strict';
-
+debugger;
 const name = 'world';
 console.log(`Hello ${name}`);
 
@@ -8,5 +8,6 @@ const getMessage = (params) => {
 };
 getMessage('sejoong');
 
+debugger;
 const str = 'aaaa';
 console.log(str);

@@ -1,7 +1,9 @@
 <style scoped></style>
 
 <template>
-  <div>App</div>
+  <header data-role="header">
+    <h1>Header.html</h1>
+  </header>
 </template>
 
 <script>

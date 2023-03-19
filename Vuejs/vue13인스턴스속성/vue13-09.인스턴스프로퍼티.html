@@ -82,3 +82,48 @@
   </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      mesg1: null,
+      //mesg2: null, >computed에 data값으로 들어가 있어서 지워줘야함
+    },
+    //template: ``,
+    methods: {
+      /* 이벤트 핸들러 등록 + 일반 함수 */
+      msgKey(e) {
+        console.log(e.target);
+        // e.target === <input />
+        // e.target.value === <input value/>
+        console.log(e.target.value);
+        this.$data.mesg1 = e.target.value;
+      }
+    },
+    computed: {
+      /* 자동처리 + 동기식.
+      변수명이 메서드 명이다.메서드로 작성.
+      return 필수.
+      data 와 공존 불가 */
+      mesg2() {
+        return this.$data.mesg1 + "" + new Date().toLocaleTimeString();
+        //인풋박스에 나타나는 효과+시간추가
+      }
+    },
+    created() {
+      console.log("created");
+    },
+    mounted() {
+      console.log("mounted");
+    },
+    updated() {
+      console.log("updated");
+    },
+  });
+
+</script>

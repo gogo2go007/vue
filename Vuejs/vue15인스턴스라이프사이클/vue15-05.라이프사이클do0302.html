@@ -44,3 +44,44 @@
 
   </body>
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      message: 'Hellow Vue.js!!!'
+    },
+    methods: {
+      btnClick(e) {
+        console.log(e.target); //<button ...
+        this.$data.message = '이름' + new Date().toLocaleDateString();
+      }
+    },
+    //template: ``,
+    beforeCreate() {
+      console.log("beforeCreate");
+    },
+    created() {
+      console.log("created");
+    },
+    beforeMounte() {
+      console.log(beforeMounte);
+    },
+    mounted() {
+      console.log("mounted");
+    },
+    beforeUpdate() {
+      console.log(beforeUpdate);
+    },
+    updated() {
+      console.log("updated");
+    },
+
+  });
+
+</script>
