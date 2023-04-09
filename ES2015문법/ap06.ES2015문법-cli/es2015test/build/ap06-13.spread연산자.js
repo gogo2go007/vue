@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _console;
 /*
@@ -49,3 +49,11 @@ var _ref = [].concat(east, west),
   cityrest = _ref.slice(1);
 //...cityrest:rest 연산자, ...east, ...west :spread 연산자
 console.log(cityrest); // ['K', 'T', 'N', 'C', 'G']
+
+debugger;
+function childComponent(...props) {
+  console.log(props);
+}
+
+const message = 'passed from Parent Component';
+childComponent(...message); // caller

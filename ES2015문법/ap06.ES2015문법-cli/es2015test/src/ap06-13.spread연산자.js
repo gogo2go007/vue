@@ -44,3 +44,4 @@ console.log(rest); // ['화진포', '송지호', '청초호']
 const [city1, ...cityrest] = [...east, ...west];
 //...cityrest:rest 연산자, ...east, ...west :spread 연산자
 console.log(cityrest); // ['K', 'T', 'N', 'C', 'G']
+

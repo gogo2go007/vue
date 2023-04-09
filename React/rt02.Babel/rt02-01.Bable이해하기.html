@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
     <title>Vue Sample</title>
   </head>
 
@@ -37,5 +38,34 @@
 </html>
 
 <!-- ES5 사용하기 -->
-
+<script type="text/javascript">
+  var func5 = function (params) {
+    return 'Hello, ES5';
+  }
+  var output = document.getElementById("output_es5");
+  output.innerHTML = func5();
+</script>
 <!-- ES2015 사용하기 -->
+
+<script src="https://unpkg.com/@babel/standalone/babel.js"
+  crossorigin="anonymous">
+    /* 자바스크립트로 컴파일러. ES6 ==> ES5, JSX ==> ES5  */
+  </script>
+<script src="http://unpkg.com/react@17/umd/react.development.js"
+  crossorigin="anonymous">
+    /* import React, { Component, PureComponent } from 'react' */
+  </script>
+<script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin="anonymous">
+    /* import ReactDOM from 'react-dom' */
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
+  crossorigin="anonymous">
+  </script>
+<script type="text/babel">
+  const func2015 = () => {
+    return 'Hello, ES2015';
+  }
+  const output = document.getElementById("output_es6");
+  output.innerHTML = func2015();
+</script>
