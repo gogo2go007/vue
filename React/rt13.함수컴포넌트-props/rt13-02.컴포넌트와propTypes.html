@@ -49,3 +49,51 @@
     <div id="app">요기에</div>
   </body>
 </html>
+
+<script src="https://unpkg.com/@babel/standalone/babel.js"
+  crossorigin="anonymous">
+    /* 자바스크립트로 컴파일러. ES6 ==> ES5, JSX ==> ES5  */
+  </script>
+<script src="http://unpkg.com/react@17/umd/react.development.js"
+  crossorigin="anonymous">
+    /* import React, { Component, PureComponent } from 'react' */
+  </script>
+<script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin="anonymous">
+    /* import ReactDOM from 'react-dom' */
+  </script>
+<script type="text/babel">
+
+  const { useState, useEffect, useRef, useCallback, useMemo, useReducer, Fragment } = React;
+
+  // id="app" 인 태그 에 아래에서 만든 컴포넌트를 화면에 붙이시오
+  // ReactDOM.render( 인자1, 인자2 )
+  ReactDOM.render(<HelloWorldContainer />, document.getElementById('app'));
+
+  // 단축키 rfchtml
+  function HelloWorldContainer({ ...props }) {
+    const [변수명, set변수명] = useState([1, 2, 3, 4,]); // 상태값이 기본타입인 경우
+    const list = 변수명 && 변수명.length > 0 && 변수명.map((value, index, array) => {
+      return (<HelloWorld> key={value} index={value}</ HelloWorld>)
+    });
+    return (
+      <div>
+        HelloWorldContainer
+      </div >
+    );
+  }
+  // const {...props} = props;
+  // const {index} = props;
+  function HelloWorld({ index }) {
+    const lis = elements.map((value, index, array) => {
+      return (<li>{index}</li>);
+    });
+    return (
+      <div>
+        Hello, react world!!! {index} - component
+      </div>
+    );
+  }
+
+
+</script>

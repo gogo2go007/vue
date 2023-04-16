@@ -47,29 +47,25 @@
         CSS로 만든 카드를 컴포넌트로 만들어 본다.
         작업 순서
 
-        1. 컴포넌트 3개 만들기.
-          CardContainer
-          Card,
+        1. 컴포넌트 4개 만들기.
+          CardContainer  : 공유 데이터
+          Card = Square + Lable,
           Square,
           Label,
 
 
         2. ReactDOM 을 사용하여 화면에 붙인다.
-          예시) ReactDOM.render( <CardContainer /> , document.getElementById("app") )
+          예시) ReactDOM.render( <CardContainer /> , document.getElementById("app") );
 
-        3. Label 컴포넌트 JSX
+        3. CardContainer 컴포넌트 JSX
           return (
-              <div className="label">
-                  {color}
-              </div>
+            <div>
+              <Card color={"#ff6663"}></Card>
+              <Card color={"#ffa737"}></Card>
+            </div>
           )
-        4. Square 컴포넌트 JSX
-            let style = { backgroundColor: props.color }
-            return (
-                <div className="square" style={style}>
-                </div>
-            )
-        5. Card 컴포넌트 JSX
+
+        4. Card 컴포넌트 JSX
           return (
               <div className="card">
                   <Square color={color}></Square>
@@ -77,11 +73,17 @@
               </div>
           )
 
-        6. CardContainer 컴포넌트 JSX
+        5. Square 컴포넌트 JSX
+          let style = { backgroundColor: props.color }
           return (
-              <div>
-                  <Card color={"#ff6663"}></Card>
-                  <Card color={"#ffa737"}></Card>
+              <div className="square" style={style}>
+              </div>
+          )
+
+        6. Label 컴포넌트 JSX
+          return (
+              <div className="label">
+                  {color}
               </div>
           )
     </xmp>
@@ -119,3 +121,69 @@
     </div>
   </body>
 </html>
+
+
+<script src="https://unpkg.com/@babel/standalone/babel.js"
+  crossorigin="anonymous">
+    /* 자바스크립트로 컴파일러. ES6 ==> ES5, JSX ==> ES5  */
+  </script>
+<script src="http://unpkg.com/react@17/umd/react.development.js"
+  crossorigin="anonymous">
+    /* import React, { Component, PureComponent } from 'react' */
+  </script>
+<script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin="anonymous">
+    /* import ReactDOM from 'react-dom' */
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
+  crossorigin="anonymous">
+  </script>
+<script type="text/babel">
+
+  const { useState, useEffect, useRef, useCallback, useMemo, useReducer, Fragment } = React;
+
+  // id="app" 인 태그 에 아래에서 만든 컴포넌트를 화면에 붙이시오
+  // ReactDOM.render( 인자1, 인자2 )
+  ReactDOM.render(<CardContainer />, document.getElementById('app'));
+
+  // 단축키 rfchtml
+  // const {...props} = props;
+  function CardContainer({ ...props }) {
+    // useState 를 사용한 컴포넌트의 상태값 설정
+    const [colors, setColors] = useState(['#FFF6663', '#FFA737']); // 상태값이 기본타입인 경우
+    const lis = colors && colors.length > 0 && colors.map((value) => {
+      return (<Card color={'value'}></Card>)
+    })
+    // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
+    return (
+      <div>
+        {lis}
+      </div>
+    );
+  }
+
+  // const {...props} = props;
+  function Card({ color }) {
+    // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
+    return (
+      <div className="card">
+        <Square color={color}></Square>
+        <Label color={color}></Label>
+      </div>
+    )
+  }
+  function Square({ color }) {
+    let style1 = { backgroundColor: color }
+    return (
+      <div className="square" style={style1}>
+      </div>
+    );
+  }
+  function Label({ color }) {
+    return (
+      <div className="label">
+        {color}
+      </div>
+    );
+  }
+</script>
